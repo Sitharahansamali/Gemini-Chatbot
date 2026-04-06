@@ -1,56 +1,99 @@
 # Gemini Chatbot (Python)
 
-A simple Python chatbot project that uses the Google Gemini API.
+A lightweight Python chatbot that sends prompts to Google Gemini and prints the response.
 
-## Features
+## Overview
 
-- Loads environment variables from a .env file
-- Uses google-genai SDK
-- Sends a prompt to Gemini and prints the response
+This project:
+- Loads environment variables from `.env`
+- Uses the `google-genai` SDK
+- Sends a prompt to a Gemini model and prints output
 
 ## Project Structure
 
-- chatbot.py: Main script
-- .env: Local environment variables (not committed)
-- .venv/: Local virtual environment (not committed)
+```text
+.
+|-- chatbot.py
+|-- .env
+|-- .gitignore
+|-- README.md
+`-- .venv/
+```
 
-## Requirements
+## Prerequisites
 
-- Python 3.11 recommended
+- Python 3.11 (recommended)
 - A Gemini API key from Google AI Studio
 
-## Setup
+## Quick Start
 
-1. Clone the repository.
-2. Open a terminal in the project folder.
-3. Create and activate a virtual environment.
+### 1. Create and activate virtual environment
 
-Windows (PowerShell):
+PowerShell:
 
+```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
+```
 
-Windows (Git Bash):
+Git Bash:
 
+```bash
 python -m venv .venv
 source .venv/Scripts/activate
+```
 
-4. Install dependencies:
+### 2. Install dependencies
 
+```bash
 pip install google-genai python-dotenv
+```
 
-5. Create a .env file with your key:
+### 3. Add API key
 
+Create `.env` in the project root:
+
+```env
 GEMINI_API_KEY=your_api_key_here
+```
 
-You can also use GOOGLE_API_KEY instead of GEMINI_API_KEY.
+`GOOGLE_API_KEY` is also supported by the script.
 
-## Run
+## Run the Project
 
+```bash
 python chatbot.py
+```
 
-## Notes
+## Troubleshooting
 
-- Do not commit your .env file.
-- If you see quota errors (429), enable billing/quota for your Gemini project or use another key.
-- If you use Python 3.14 alpha, some packages may fail. Use Python 3.11 for stability.
+### Quota error (429 RESOURCE_EXHAUSTED)
+
+- Your API key/project has no available quota.
+- Enable billing/quota in Google AI Studio / Google Cloud, or use another key with quota.
+
+### Model not found (404 NOT_FOUND)
+
+- The selected model is unavailable for your key or API version.
+- Update the model name in `chatbot.py` to a supported one.
+
+### DLL load failed for `pydantic_core`
+
+- Usually caused by incompatible Python versions (for example Python 3.14 alpha).
+- Recreate environment with Python 3.11 and reinstall dependencies.
+
+## Publish to GitHub
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin <your-repo-url>
+git push -u origin main
+```
+
+## Security Note
+
+- Never commit `.env`.
+- If a key is exposed, rotate/regenerate it immediately.
