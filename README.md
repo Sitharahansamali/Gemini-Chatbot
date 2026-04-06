@@ -12,13 +12,15 @@ This project:
 ## Project Structure
 
 ```text
-.
-|-- chatbot.py
-|-- .env
-|-- .gitignore
-|-- README.md
-`-- .venv/
+chatbot/
+├── chatbot.py          # Main chatbot script
+├── .env                # API key configuration
+├── .venv/              # Local Python virtual environment
+├── .gitignore          # Ignored local and generated files
+└── README.md           # Project overview and setup instructions
 ```
+
+Local files such as `.env` and `.venv/` are shown here for clarity, even though they are usually ignored in git.
 
 ## Prerequisites
 
@@ -64,35 +66,6 @@ GEMINI_API_KEY=your_api_key_here
 ```bash
 python chatbot.py
 ```
-
-## Troubleshooting
-
-### Quota error (429 RESOURCE_EXHAUSTED)
-
-- Your API key/project has no available quota.
-- Enable billing/quota in Google AI Studio / Google Cloud, or use another key with quota.
-
-### Model not found (404 NOT_FOUND)
-
-- The selected model is unavailable for your key or API version.
-- Update the model name in `chatbot.py` to a supported one.
-
-### DLL load failed for `pydantic_core`
-
-- Usually caused by incompatible Python versions (for example Python 3.14 alpha).
-- Recreate environment with Python 3.11 and reinstall dependencies.
-
-## Publish to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin <your-repo-url>
-git push -u origin main
-```
-
 ## Security Note
 
 - Never commit `.env`.
